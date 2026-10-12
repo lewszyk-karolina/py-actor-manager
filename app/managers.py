@@ -10,7 +10,10 @@ class ActorManager():
 
     def create(self, first_name, last_name):
         cur = self._db_name.cursor()
-        cur.execute(f"INSERT INTO {self._table_name} (first_name, last_name) VALUES (?, ?)", (first_name, last_name))
+        cur.execute(f"INSERT INTO {self._table_name} (first_name, last_name) VALUES (?, ?)",
+                    (first_name, last_name)
+                    )
+        self._db_name.commit()
 
     def all(self):
         cur = self._db_name.cursor()
@@ -25,10 +28,16 @@ class ActorManager():
 
     def update(self, pk, new_first_name, new_last_name):
         cur = self._db_name.cursor()
-        cur.execute(f"UPDATE {self._table_name} SET first_name = ?, last_name = ? WHERE id = ?", (new_first_name, new_last_name, pk))
+        cur.execute(
+            f"UPDATE {self._table_name} SET first_name = ?, last_name = ? WHERE id = ?",
+            (new_first_name, new_last_name, pk)
+        )
         self._db_name.commit()
 
     def delete(self, pk):
         cur = self._db_name.cursor()
-        cur.execute(f"DELETE FROM {self._table_name} WHERE id = ?", (pk,))
+        cur.execute(
+            f"DELETE FROM {self._table_name} WHERE id = ?",
+            (pk,)
+        )
         self._db_name.commit()
