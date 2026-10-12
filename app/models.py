@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Actor():
     def __init__(self, id, first_name, last_name):
