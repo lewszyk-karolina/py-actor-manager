@@ -41,7 +41,7 @@ class ActorManager():
         )
         self._db_name.commit()
 
-    def delete(self, pk: id) -> None:
+    def delete(self, pk: int) -> None:
         cur = self._db_name.cursor()
         cur.execute(
             f"DELETE FROM {self._table_name} WHERE id = ?",
